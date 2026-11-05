@@ -47,3 +47,7 @@ next-env.d.ts
 credentials*.json
 service-account*.json
 .aws/
+
+# private notification subscriptions
+/.data/
+.env.local
