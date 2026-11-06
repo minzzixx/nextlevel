@@ -125,6 +125,7 @@ export function Home({ account }: { account: ReactNode }) {
           <p>바람이 나뭇잎 사이를 지나고,<br />동백꽃 한 송이가 조용히 인사를 건네는 곳.</p>
           <p>마을소녀와 동백이를 따라 걸어보세요.<br />숲을 바라보고, 손으로 만들고, 잠시 쉬어가는 시간.<br />그 느긋함을 이번 컬렉션에 담았습니다.</p>
           <ol><li>동백숲을 걸으며 꽃과 잎의 색을 살펴봐요.</li><li>작은 꽃 모양을 빚으며 마을의 기억을 남겨요.</li><li>따뜻한 차 한 잔과 함께 잠시 쉬어가요.</li></ol>
+          <a className="text-button" href="/dungeon/index.html">동백마을 던전 체험하기 <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
@@ -141,7 +142,6 @@ export function Home({ account }: { account: ReactNode }) {
         }}>
           <div key={play} className={`logo-stage ${hasPlayed ? "playing" : ""}`} role="img" aria-label="동백꽃 캐릭터와 민트콩 요정이 만나 동백마을 × A2O Lite 로고가 됩니다">
             <span className="orbit" /><span className="orbit other" /><span className="spark left">✧</span><span className="spark right">✧</span>
-          <a className="text-button" href="/dungeon/index.html">동백마을 던전 체험하기 <span aria-hidden="true">↗</span></a>
             <div className="logo-flower"><Image src={art + "camellia.png"} width={331} height={384} alt="" /></div>
             <div className="fairy"><Image src={art + "mint.png"} width={272} height={338} alt="" /></div>
             <div className="lockup"><Image src={art + "bloom-your-way.png"} width={300} height={200} alt="Bloom Your Way 원본 로고" /><small>DONGBAEK VILLAGE × A2O LITE</small></div>
