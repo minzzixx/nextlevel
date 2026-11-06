@@ -268,7 +268,7 @@ export function Home({ account }: { account: ReactNode }) {
         <><span className="eyebrow">A LITTLE NOTE FOR YOU</span><h2 id="notify-title">꽃피는 소식, 받아보세요.</h2><p>콜라보 컬렉션의 출시 소식을 받을 이메일 주소를 남겨 주세요.</p>
         <form onSubmit={submit}><label htmlFor="email">이메일 주소</label><input id="email" name="email" type="email" autoComplete="email" placeholder="hello@example.com" maxLength={254} required />
         <label className="consent"><input type="checkbox" name="consent" required />출시 알림 신청을 위한 이메일 수집·이용에 동의합니다.</label>
-        <p className="form-note">신청 정보는 이 서버에 저장됩니다. 이메일 발송 기능은 준비 중입니다.</p>
+        <p className="form-note">신청 정보는 출시 알림을 위해 저장돼요. 이메일 발송 기능은 준비 중입니다.</p>
         {status === "error" && <p className="error" role="alert">{message}</p>}
         <button className="button" disabled={status === "loading"}>{status === "loading" ? "신청하고 있어요…" : "알림받기"} <span>↗</span></button></form></>}
     </dialog>
