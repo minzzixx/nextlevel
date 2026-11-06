@@ -250,11 +250,14 @@ export function Home({ account }: { account: ReactNode }) {
       </section>
 
       <section className="section notify">
-        <div className="notify-flower"><Image src={art + "camellia-hello.png"} width={260} height={267} alt="" /></div><span className="leaf" aria-hidden="true">❧</span>
         <span className="eyebrow">OUR NEXT CHAPTER, WITH YOU</span>
         <h2>꽃피는 소식을,<br />가장 먼저 전할게요.</h2>
         <p>동백마을 × A2O Lite의 새로운 컬렉션.<br />출시 소식을 놓치지 않도록 알림을 신청해 주세요.</p>
         <button className="button" onClick={show}>출시 알림받기 <span>↗</span></button>
+        <div className="notify-friends" aria-hidden="true">
+          <Image className="notify-camellia" src={art + "camellia-hello.png"} width={260} height={267} alt="" />
+          <Image className="notify-blue" src={art + "blue-wave.png"} width={263} height={258} alt="" />
+        </div>
       </section>
     </main>
     <footer><a href="#" className="brand"><Image src={art + "bloom-your-way.png"} width={60} height={40} alt="Bloom Your Way" />동백마을</a><p>마을의 마음이 당신의 일상에 닿기를.</p><small>DONGBAEK VILLAGE</small></footer>
