@@ -1,5 +1,6 @@
 const $ = s => document.querySelector(s);
 const canvas = $('#world'), ctx = canvas.getContext('2d');
+const landscapeGame = matchMedia('(orientation: landscape) and (max-height: 600px) and (max-width: 1100px)');
 const companionImages = ['camellia', 'mint', 'blue'].map(name => {
   const image = new Image();
   image.src = 'assets/companions/' + name + '.png';
@@ -49,6 +50,17 @@ function drawVillage(){canvas.width=960;canvas.height=640;ctx.setTransform(2,0,0
 function drawMap() {
   drawVillage();
   drawCompanion();
+  if (!landscapeGame.matches) return;
+
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  const scale = Math.max(width / canvas.width, height / canvas.height);
+  // The game draws at 2 bitmap pixels per map unit.
+  const offsetX = width / 2 - player.x * 2 * scale;
+  const offsetY = height / 2 - (player.y - 10) * 2 * scale;
+  const x = Math.min(0, Math.max(width - canvas.width * scale, offsetX));
+  const y = Math.min(0, Math.max(height - canvas.height * scale, offsetY));
+  canvas.style.setProperty('--camera-position', `${x}px ${y}px`);
 }
 drawMap();
 window.addEventListener('resize',()=>requestAnimationFrame(drawMap));
