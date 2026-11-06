@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { LogoCursor } from "./logo-cursor";
 import "./globals.css";
 
 const headingFont = localFont({
@@ -16,6 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  return <html lang="ko" className={headingFont.variable} data-scroll-behavior="smooth"><body>{children}</body></html>;
+  return <html lang="ko" className={headingFont.variable} data-scroll-behavior="smooth"><body>{children}<LogoCursor /></body></html>;
 }
 
