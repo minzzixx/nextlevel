@@ -46,7 +46,7 @@ nav a:hover { color: var(--red); }
 .button:hover { background: #913a33; transform: translateY(-2px); }
 .button span { font-size: 20px; line-height: 1; }
 .button.small { padding: 11px 15px; gap: 23px; font-size: 12px; }
-.hero { display: grid; grid-template-columns: 1fr 1.07fr; align-items: center; gap: 4%; position: relative; max-width: 1480px; margin: auto; padding: 52px 5% 56px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.07fr); align-items: center; gap: 4%; position: relative; max-width: 1480px; margin: auto; padding: 52px 5% 56px; }
 .eyebrow { display: block; font-size: 10px; letter-spacing: 2px; font-weight: 700; }
 .hero .eyebrow { display: flex; align-items: center; gap: 9px; }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
@@ -110,7 +110,7 @@ figcaption { font-size: 9px; letter-spacing: 1.7px; color: #576a53; margin-top: 
 .section .note { font-size: 11px; margin-top: 27px; }
 .text-button { background: none; border: none; border-bottom: 1px solid #73866f; padding: 8px 0; display: inline-flex; gap: 31px; align-items: center; margin-top: 17px; font-size: 12px; }
 .text-button span { font-size: 19px; }
-.story { background: #e9ecdf; display: grid; grid-template-columns: 1.07fr 1fr; align-items: center; gap: 8%; }
+.story { background: #e9ecdf; display: grid; grid-template-columns: minmax(0, 1.07fr) minmax(0, 1fr); align-items: center; gap: 8%; }
 .story figure svg { border-radius: 36% 36% 5px 5px; }
 .story p { margin-top: 18px; }
 .story ol { list-style: decimal-leading-zero; padding: 19px 0 0 21px; margin-top: 23px; border-top: 1px solid #bdc8b5; display: grid; gap: 11px; font-size: 12px; }
@@ -191,18 +191,22 @@ footer small { letter-spacing: 1px; }
   .hero p { font-size: 12px; }
   .section { padding: 69px 6%; }
 }
+@media (661px <= width <= 900px) {
+  .section-heading { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .collection-animation { grid-column: 2; grid-row: 1 / span 2; }
+  .section-heading > :last-child { justify-self: start; }
+}
 @media(max-width: 660px) {
   :root { --header-height: 48px; }
-  .header nav { display: none; }
   .button.small { gap: 10px; font-size: 10px; padding: 9px 11px; }
   .hero { grid-template-columns: 1fr; gap: 26px; padding: 38px 6% 49px; }
   .hero-copy { text-align: center; }
   .hero .eyebrow { justify-content: center; }
-  .hero h1 { font-size: clamp(35px, 10vw, 52px); margin: 19px 0 14px; }
+  .hero h1 { font-size: clamp(29px, 9vw, 52px); margin: 19px 0 14px; }
   .hero p { margin-bottom: 21px; }
   .hero .button { padding: 14px 20px; }
   .hero-note { justify-content: center; margin-top: 12px; }
-  .hero-art { width: min(100%,440px); margin: auto; }
+  .hero-art { width: min(100%, 520px); margin: auto; }
   .stamp { right: -5px; width: 73px; height: 73px; font-size: 8px; }
   .stamp svg { width: 16px; }
   figcaption { font-size: 8px; letter-spacing: 1px; }
@@ -215,8 +219,6 @@ footer small { letter-spacing: 1px; }
   .collection-animation { max-width: 420px; justify-self: center; }
   .eyebrow { font-size: 8px; letter-spacing: 1.6px; }
   .section p { font-size: 12px; }
-  .goods { grid-template-columns: 1fr; gap: 23px; }
-  .goods article { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; align-items: center; }
   .product-copy { padding-top: 0; }
   .product-copy h3 { font-size: 16px; }
   .product-copy p { font-size: 11px; }
@@ -303,6 +305,22 @@ footer small { letter-spacing: 1px; }
 .hero-camellia { position: relative; z-index: 1; width: clamp(47px, 8vw, 80px); }
 .hero-mint { width: clamp(32px, 5.3vw, 53px); margin-right: -5px; transform: rotate(-8deg); }
 .hero-blue { width: clamp(42px, 6.9vw, 69px); margin-left: -7px; transform: rotate(8deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-friends img {
+    --hop-height: clamp(4px, 1vw, 10px);
+    transform-origin: center bottom;
+    animation: hero-friend-hop 1.6s ease-in-out 2;
+  }
+  .hero-friends .hero-mint { animation-delay: .18s; }
+  .hero-friends .hero-camellia { animation-delay: .36s; }
+  .hero-friends .hero-blue { animation-delay: .54s; }
+}
+@keyframes hero-friend-hop {
+  0%, 52%, 100% { translate: none; scale: none; }
+  12% { scale: 1.06 .92; }
+  29% { translate: 0 calc(-1 * var(--hop-height)); scale: .97 1.04; }
+  45% { scale: 1.04 .96; }
+}
 .logo-flower { width: clamp(70px, 13vw, 100px); }
 .fairy { width: clamp(61px, 11vw, 83px); height: auto; display: block; background: none; }
 .fairy::before,.fairy::after { content: none; }
@@ -381,7 +399,6 @@ footer small { letter-spacing: 1px; }
 @media (max-width: 1000px) { .goods { grid-template-columns: repeat(3,minmax(0,1fr)); } }
 @media (max-width: 660px) {
   .goods { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 19px 12px; }
-  .goods article { display: block; }
   .goods-card .product-copy { padding-top: 11px; }
   .goods-card .product-copy h3 { margin: 4px 0; }
   .goods-filter { margin-bottom: 15px; }
@@ -415,9 +432,23 @@ footer small { letter-spacing: 1px; }
 .account-error, .account-status { margin-top: 10px; font-size: 13px; }
 .account-error, .account-withdraw .account-link { color: var(--red); }
 .account-withdraw { border-top: 1px solid var(--line); margin-top: 28px; }
-@media (max-width: 1040px) { .account-header > nav { display: none; } }
+@media (max-width: 1040px) {
+  .account-header { flex-wrap: wrap; gap: 0 12px; padding-block: 6px 0; }
+  .account-header > nav {
+    order: 1;
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: clamp(12px, 4vw, 28px);
+    row-gap: 0;
+  }
+  .account-header > nav a { display: flex; align-items: center; min-height: 44px; }
+  .header-actions { margin-inline-start: auto; }
+}
 @media (max-width: 660px) {
-  .account-header { flex-wrap: wrap; gap: 5px; padding-block: 5px; }
-  .header-actions { flex-wrap: wrap; gap: 8px; }
+  .header-actions { flex-wrap: wrap; justify-content: flex-end; gap: 4px 8px; }
+  .header-actions .button.small,
+  .account-header .account-menu a,
+  .account-header .account-menu button { display: inline-flex; align-items: center; min-height: 44px; }
   .account-header .account-menu { gap: 8px; font-size: 11px; }
 }
