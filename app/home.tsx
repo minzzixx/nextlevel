@@ -141,6 +141,7 @@ export function Home({ account }: { account: ReactNode }) {
         }}>
           <div key={play} className={`logo-stage ${hasPlayed ? "playing" : ""}`} role="img" aria-label="동백꽃 캐릭터와 민트콩 요정이 만나 동백마을 × A2O Lite 로고가 됩니다">
             <span className="orbit" /><span className="orbit other" /><span className="spark left">✧</span><span className="spark right">✧</span>
+          <a className="text-button" href="/dungeon/index.html">동백마을 던전 체험하기 <span aria-hidden="true">↗</span></a>
             <div className="logo-flower"><Image src={art + "camellia.png"} width={331} height={384} alt="" /></div>
             <div className="fairy"><Image src={art + "mint.png"} width={272} height={338} alt="" /></div>
             <div className="lockup"><Image src={art + "bloom-your-way.png"} width={300} height={200} alt="Bloom Your Way 원본 로고" /><small>DONGBAEK VILLAGE × A2O LITE</small></div>
