@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     siteName: "동백마을",
     locale: "ko_KR",
     images: [{
-      url: "/dongbaek/story-og.jpg",
+      url: "/dongbaek/dreamy-forest-og.jpg",
       type: "image/jpeg",
       width: 1200,
       height: 630,
-      alt: "동백숲에서 만난 마을소녀와 동백이",
+      alt: "동백마을의 몽환적인 동백숲",
     }],
   },
   twitter: { card: "summary_large_image" },
