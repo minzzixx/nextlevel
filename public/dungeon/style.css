@@ -27,3 +27,20 @@
 .earned-badge{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .earned-badge>span{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#913d52;border:3px solid #e8b968;color:#fff4da;font-size:26px;flex-shrink:0}
 .earned-badge small{font-size:11px}
+
+@font-face {
+  font-family: "Jua";
+  src: url("../fonts/Jua-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+h1, h2 {
+  font-family: "Jua", "Malgun Gothic", sans-serif;
+  font-weight: 400;
+  word-break: keep-all;
+}
+
+h1 span {
+  font-family: "Gowun Batang", serif;
+}
