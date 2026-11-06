@@ -4,12 +4,11 @@ import { useEffect } from "react";
 
 export function LogoCursor() {
   useEffect(() => {
-    const motionAllowed = window.matchMedia("(any-pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const motionAllowed = window.matchMedia("(prefers-reduced-motion: no-preference)");
     const sparks = new Map<HTMLElement, number>();
 
     function sparkle(event: MouseEvent) {
       if (!motionAllowed.matches || event.detail === 0) return;
-      if (event instanceof PointerEvent && event.pointerType !== "mouse") return;
 
       const spark = document.createElement("span");
       spark.className = "cursor-spark";
