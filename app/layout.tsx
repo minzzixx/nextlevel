@@ -11,7 +11,7 @@ const headingFont = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nextlevel-kmg18.vercel.app"),
+  metadataBase: new URL("https://nextlevel-mu-cyan.vercel.app"),
   title: "동백마을 | 일상에 피어나는 작은 만남",
   description: "동백숲의 색과 마을의 다정한 마음을 담은 콜라보 컬렉션. 동백마을 이야기와 출시 예정 제품을 만나보세요.",
   openGraph: {
