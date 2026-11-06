@@ -22,6 +22,10 @@ export function Home({ account }: { account: ReactNode }) {
   const [play, setPlay] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const motionStage = useRef<HTMLDivElement>(null);
+  const mainContent = useRef<HTMLElement>(null);
+  const storyFrame = useRef<HTMLDivElement>(null);
+  const [isStorySpriteLoaded, setIsStorySpriteLoaded] = useState(false);
+  const [hasStartedWalk, setHasStartedWalk] = useState(false);
   const heroTitle = useRef<HTMLHeadingElement>(null);
   const heroVideo = useRef<HTMLVideoElement>(null);
 
@@ -72,6 +76,35 @@ export function Home({ account }: { account: ReactNode }) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const frame = storyFrame.current;
+    if (!frame || !isStorySpriteLoaded) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.intersectionRatio < 0.35) return;
+      setHasStartedWalk(true);
+      observer.disconnect();
+    }, { threshold: 0.35 });
+
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, [isStorySpriteLoaded]);
+
+  useEffect(() => {
+    const targets = mainContent.current?.querySelectorAll(".section h2, .notify .button");
+    if (!targets?.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.intersectionRatio >= 0.5) entry.target.classList.add("scroll-bounce");
+        else if (!entry.isIntersecting) entry.target.classList.remove("scroll-bounce");
+      }
+    }, { threshold: [0, 0.5] });
+
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
   function show() {
     if (status !== "loading") { setStatus("idle"); setMessage(""); }
     dialog.current?.showModal();
@@ -98,7 +131,7 @@ export function Home({ account }: { account: ReactNode }) {
 
   return <>
     <SiteHeader account={account} launch={<button className="button small" onClick={show}>출시 알림받기 <span>↗</span></button>} />
-    <main>
+    <main ref={mainContent}>
       <section className="hero">
         <div className="hero-copy">
           <span className="eyebrow"><i className="dot" /> A LITTLE VILLAGE, A NEW STORY</span>
@@ -161,15 +194,25 @@ export function Home({ account }: { account: ReactNode }) {
 
       <section id="story" className="section story">
         <figure>
-          <div className="village-frame story-frame">
+          <div ref={storyFrame} className={`village-frame story-frame${hasStartedWalk ? " is-walking" : ""}`}>
             <Image
-              src={art + "dreamy-forest.png"}
+              src={art + "story-forest.webp"}
               width={1254}
               height={1254}
               sizes="(max-width: 660px) 88vw, 44vw"
               alt="별과 달이 떠 있는 동백숲의 마을소녀와 동백이"
               className="block h-auto w-full"
             />
+            <div className="story-camellia" aria-hidden="true">
+              <Image
+                src={art + "story-camellia.webp"}
+                width={600}
+                height={600}
+                sizes="(max-width: 660px) 24vw, 12vw"
+                alt=""
+                onLoad={() => setIsStorySpriteLoaded(true)}
+              />
+            </div>
           </div>
           <figcaption>마을소녀와 동백이의 숲길 산책</figcaption>
         </figure>
