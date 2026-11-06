@@ -38,7 +38,7 @@ export function GoodsGallery() {
         dialog.current?.showModal();
         if (dialog.current) dialog.current.scrollTop = 0;
       }}>
-        <div className={`product-art goods-photo goods-${item.id}`}>
+        <div className="product-art goods-photo">
           <Photo photo={item.photo} />
           {item.limited && <span className="limited-badge">한정판</span>}
         </div>
@@ -54,7 +54,7 @@ export function GoodsGallery() {
         <button className="close" onClick={() => dialog.current?.close()} aria-label="상품 상세 닫기" autoFocus>×</button>
         <span className="eyebrow">{active.category} · 출시 예정</span>
         <h2 id="goods-title">{active.name}</h2>
-        <div className={`goods-photo detail-photo goods-${active.id}`}>
+        <div className="goods-photo detail-photo">
           <Photo photo={active.detail ?? active.photo} large />
           {active.limited && <span className="limited-badge">한정판</span>}
         </div>

@@ -392,12 +392,9 @@ footer small { letter-spacing: 1px; }
 .goods-filter button[aria-pressed="true"] { border-color: var(--bloom-pink); font-weight: 700; }
 .goods { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; color: #171717; }
 .goods-card { display: block; width: 100%; text-align: left; background: none; color: inherit; border: 0; padding: 0; }
-.goods-photo { display: grid; place-items: center; position: relative; overflow: hidden; background: #f1e5dd; }
-.product-art.goods-photo { aspect-ratio: 1 / 1.15; }
-.goods-oil { background: #eee6d7; }
-.goods-grip { background: #f7e6ef; }
-.goods-keyring { background: #efdae0; }
-.goods-stickers { background: #ebe0db; }
+.goods-photo { display: grid; place-items: center; position: relative; overflow: hidden; }
+.product-art.goods-photo { aspect-ratio: 1 / 1.15; background: transparent; }
+.goods-card .goods-photo img { filter: drop-shadow(0 4px 4px #241b1729); }
 .goods-crop { position: relative; overflow: hidden; height: 100%; max-width: 100%; }
 .goods-crop img { position: absolute; max-width: none; }
 .goods-photo .photo-cover { object-fit: cover; }

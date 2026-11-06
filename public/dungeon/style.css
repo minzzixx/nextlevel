@@ -44,3 +44,82 @@ h1, h2 {
 h1 span {
   font-family: "Gowun Batang", serif;
 }
+
+.rotate-hint { display: none; }
+
+@media (orientation: portrait) and (max-width: 700px) {
+  .rotate-hint { display: block; margin: 0 0 10px; font-size: 12px; }
+}
+
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  body { background: #263d30; }
+  body > header, body > footer, .intro, .below, .asset-section,
+  .game-bar, #avatarControls, .game-bottom { display: none; }
+  main {
+    max-width: none;
+    height: 100dvh;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  .game-shell {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+  .viewport {
+    --control-rail: clamp(113px, 21vw, 140px);
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: auto;
+    display: grid;
+    grid-template: minmax(0, 1fr) / var(--control-rail) minmax(0, 1fr) var(--control-rail);
+  }
+  canvas#world {
+    grid-column: 2;
+    position: static;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+    background: transparent;
+  }
+  .location { top: 8px; left: 8px; bottom: auto; padding: 6px; font-size: 10px; }
+  .welcome { top: 8px; right: 8px; left: auto; padding: 8px 12px; max-width: min(220px, 45%); }
+  .welcome .seed { display: none; }
+  #interact {
+    left: auto;
+    right: 7px;
+    bottom: 9px;
+    transform: none;
+    max-width: calc(var(--control-rail) - 14px);
+    min-height: 44px;
+    padding: 6px;
+    white-space: normal;
+    font-size: 11px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px),
+       (any-pointer: coarse) and (width > 700px) {
+  .dpad {
+    position: absolute;
+    bottom: 9px;
+    left: 4px;
+    display: grid;
+    grid-template: repeat(2, 40px) / repeat(3, 34px);
+    gap: 2px;
+  }
+  .dpad button {
+    background: #faf2d9;
+    border: 1px solid #6b8054;
+    border-radius: 5px;
+    touch-action: none;
+    user-select: none;
+  }
+  .dpad [data-dir=up] { grid-area: 1 / 2; }
+  .dpad [data-dir=left] { grid-area: 2 / 1; }
+  .dpad [data-dir=down] { grid-area: 2 / 2; }
+  .dpad [data-dir=right] { grid-area: 2 / 3; }
+}

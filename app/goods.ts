@@ -22,7 +22,7 @@ export const goods: GoodsItem[] = [
   },
   {
     id: "bouquet", name: "동백꽃 풍선 부케", category: "소품",
-    photo: { src: asset + "balloon-bouquet.png", alt: "꽃 모양 풍선과 리본, 블룸 유어 웨이 패키지" },
+    photo: { src: asset + "balloon-bouquet-cutout.webp", alt: "꽃 모양 풍선과 리본, 블룸 유어 웨이 패키지", contain: true },
     detail: { src: asset + "balloon-party.png", alt: "야외 식탁 옆에 동백꽃 풍선 부케와 패키지가 놓인 모습" },
     usage: "야외 식탁이나 축하 자리에 놓아 사진에 화사한 포인트를 더해 보세요.",
     story: "핑크 동백꽃과 블루 네잎을 큼직한 풍선으로 바꾸고, 리본으로 한데 묶었어요.",
