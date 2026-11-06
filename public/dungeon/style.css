@@ -72,7 +72,8 @@ h1 span {
     flex: 1;
     min-height: 0;
     aspect-ratio: auto;
-    background: #263d30;
+    background: linear-gradient(#263d3066, #263d3066),
+      #263d30 url("assets/pixel/village_background.png") center / cover no-repeat;
   }
   canvas#world {
     position: static;
